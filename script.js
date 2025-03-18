@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const playersData = {
         forward: [
-            { name: "Месси", team: "Интер Майами", logo: "images/1football-field.png" },
-            { name: "Холанд", team: "Манчестер Сити", logo: "images/1football-field.png" },
-            { name: "Мбаппе", team: "ПСЖ", logo: "images/1football-field.png" }
+            { name: "Месси", team: "Интер Майами", logo: "images/logos/inter_miami.png" },
+            { name: "Холанд", team: "Манчестер Сити", logo: "images/logos/mancity.png" },
+            { name: "Мбаппе", team: "ПСЖ", logo: "images/logos/psg.png" }
         ]
     };
 
@@ -30,8 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function selectPlayer(player) {
         if (selectedShirt) {
+            const prevPlayer = {
+                name: selectedShirt.querySelector(".player-name").textContent,
+                logo: selectedShirt.dataset.logo || "images/logos/default.png"
+            };
+
             selectedShirt.querySelector(".player-name").textContent = player.name;
-        }
-        playersListContainer.style.display = "none";
-    }
-});
+            selectedShirt.dataset.logo = player.logo;
+
+            const li = document.createElement("li");
+            li.innerHTML = <img src="${prevPlayer.logo}" alt="prev">${prevPlayer.name};
+            li
