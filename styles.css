@@ -10,11 +10,11 @@ body {
 /* Фон с изображением поля */
 .field {
     width: 80%;
-    margin: 20px auto;
+    margin: 50px auto;
     position: relative;
     background: url('images/1football-field.png') center/cover no-repeat;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 50px;
+    border-radius: 50px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
