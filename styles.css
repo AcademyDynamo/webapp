@@ -1,61 +1,31 @@
-/* Страница 1: Красный градиент и прямоугольные кнопки с округленными углами */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(180deg, #FF6347, #D32F2F); /* Красный градиент */
-    color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
-    text-align: center;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #D32F2F;
-    border: none;
-    border-radius: 25px; /* Округлые углы */
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-    button:hover {
-        background-color: #B71C1C;
-    }
-
-/* Страница 2: Красный фон, зеленое футбольное поле */
-.page2 {
-    background-color: #D32F2F; /* Красный фон */
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.field {
-    width: 80%;
-    height: 60%;
-    background-color: #388E3C; /* Зеленое футбольное поле */
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 карточек */
-    gap: 10px;
-}
-
-.card {
-    background-color: #4CAF50; /* Зеленые карточки */
+.header {
+    background-color: #333;
+    color: #fff;
     padding: 20px;
     text-align: center;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-    .card:hover {
-        background-color: #388E3C;
-    }
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.page {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.active-card {
+    background-color: green;
+    color: white;
+}
+
