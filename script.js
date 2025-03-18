@@ -1,47 +1,70 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const startButton = document.getElementById("startButton");
-    const helpButton = document.getElementById("helpButton");
-    const statsButton = document.getElementById("statsButton");
-    const page1 = document.getElementById("page1");
-    const page2 = document.getElementById("page2");
-    const cards = document.querySelectorAll(".card");
+    const players = {
+        goalkeeper: ["Алисон", "Нойер", "Куртуа"],
+        defender: ["Рамос", "Ван Дейк", "Кимпембе"],
+        midfielder: ["Де Брюйне", "Кроос", "Модрич"],
+        forward: ["Месси", "Роналду", "Холанд"]
+    };
 
-    // Переход на вторую страницу
-    startButton.addEventListener("click", function () {
-        page1.style.display = "none";
-        page2.style.display = "flex";
-    });
+    const team = [];
+    const maxPlayers = 4;
 
-    // Вывод помощи
-    helpButton.addEventListener("click", function () {
-        alert("Правила игры: выберите карточку, чтобы увидеть список игроков.");
-    });
+    const playersList = document.getElementById("playersList");
+    const teamList = document.getElementById("teamList");
+    const sendTeamButton = document.getElementById("sendTeam");
 
-    // Вывод статистики (заглушка)
-    statsButton.addEventListener("click", function () {
-        alert("Статистика: пока данных нет.");
-    });
-
-    // Обработка нажатия на карточку
-    cards.forEach(card => {
-        card.addEventListener("click", function () {
-            const id = this.dataset.id;
-            const playersList = getPlayersList(id);
-            alert(Игроки на позиции ${id}: ${playersList.join(", ")});
+    document.querySelectorAll(".position-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const position = this.dataset.position;
+            showPlayers(position);
         });
     });
-});
 
-// Функция возвращает список игроков для каждой карточки
-function getPlayersList(position) {
-    const players = {
-        1: ["Игрок 1", "Игрок 2", "Игрок 3"],
-        2: ["Игрок 4", "Игрок 5", "Игрок 6"],
-        3: ["Игрок 7", "Игрок 8", "Игрок 9"],
-        4: ["Игрок 10", "Игрок 11", "Игрок 12"],
-        5: ["Игрок 13", "Игрок 14", "Игрок 15"],
-        6: ["Игрок 16", "Игрок 17", "Игрок 18"],
-        7: ["Игрок 19", "Игрок 20", "Игрок 21"]
-    };
-    return players[position] || ["Нет данных"];
-}
+    function showPlayers(position) {
+        playersList.innerHTML = "";
+        players[position].forEach(player => {
+            const li = document.createElement("li");
+            li.textContent = player;
+            li.addEventListener("click", function () {
+                addToTeam(player);
+            });
+            playersList.appendChild(li);
+        });
+    }
+
+    function addToTeam(player) {
+        if (team.length >= maxPlayers) {
+            alert("Максимум 4 игрока!");
+            return;
+        }
+        if (!team.includes(player)) {
+            team.push(player);
+            updateTeamList();
+        }
+    }
+
+    function updateTeamList() {
+        teamList.innerHTML = "";
+        team.forEach(player => {
+            const li = document.createElement("li");
+            li.textContent = player;
+            teamList.appendChild(li);
+        });
+    }
+
+    sendTeamButton.addEventListener("click", function () {
+        if (team.length < maxPlayers) {
+            alert("Выбери 4 игроков!");
+            return;
+        }
+        
+        const teamData = JSON.stringify(team);
+        
+        if (window.Telegram && Telegram.WebApp) {
+            Telegram.WebApp.sendData(teamData);
+            Telegram.WebApp.close();
+        } else {
+            alert("Telegram WebApp API не поддерживается.");
+        }
+    });
+});
