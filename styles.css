@@ -17,6 +17,13 @@
     text-align: center;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
 button {
     padding: 12px 24px;
     font-size: 18px;
@@ -26,11 +33,12 @@ button {
     color: white;
     cursor: pointer;
     transition: 0.3s;
+    width: 200px;
 }
 
-    button:hover {
-        background-color: #9C1B1B;
-    }
+button:hover {
+    background-color: #9C1B1B;
+}
 
 /* Вторая страница */
 .page2 {
@@ -67,7 +75,6 @@ button {
     transition: 0.3s;
 }
 
-    .card:hover {
-        background-color: #D32F2F;
-    }
-
+.card:hover {
+    background-color: #D32F2F;
+}
