@@ -9,6 +9,7 @@ body {
     overflow: hidden;
 }
 
+/* Расположение игроков */
 .field {
     display: flex;
     justify-content: center;
@@ -16,6 +17,7 @@ body {
     margin-top: 50px;
 }
 
+/* Иконки игроков */
 .player {
     cursor: pointer;
     display: flex;
@@ -38,17 +40,7 @@ body {
     margin-top: 5px;
 }
 
-.player-team {
-    font-size: 14px;
-    color: lightgray;
-}
-
-.player-position {
-    font-size: 14px;
-    font-style: italic;
-}
-
-/* Затемнение экрана при выборе игрока */
+/* Затемнение экрана */
 .overlay {
     position: fixed;
     top: 0;
@@ -59,35 +51,22 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeIn 0.3s ease-in-out;
     z-index: 1000;
 }
 
-/* Контейнер списка запасных */
-.substitutes-container {
+/* Прямоугольник выбора */
+.modal-box {
     background: white;
     padding: 20px;
     border-radius: 10px;
-    text-align: left;
-    max-width: 300px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    width: 300px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 1001;
-}
-
-/* Запасные игроки */
-.substitute-item {
-    padding: 10px;
-    margin: 5px 0;
-    background: #ccc;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.substitute-item:hover {
-    background: #aaa;
-}
-
-/* Анимация затемнения */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
