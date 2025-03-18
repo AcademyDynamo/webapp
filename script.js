@@ -1,43 +1,37 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const playersData = {
-        forward: [
-            { name: "Месси", team: "Интер Майами", logo: "images/logos/inter_miami.png" },
-            { name: "Холанд", team: "Манчестер Сити", logo: "images/logos/mancity.png" },
-            { name: "Мбаппе", team: "ПСЖ", logo: "images/logos/psg.png" }
-        ]
-    };
+document.addEventListener("DOMContentLoaded", () => {
+    const startButton = document.getElementById("startGame");
+    const tournamentSection = document.querySelector(".tournament");
+    const gameFieldSection = document.querySelector(".game-field");
+    const playerBadges = document.querySelectorAll(".player-badge");
+    const playerList = document.getElementById("player-list");
+    const themeToggle = document.getElementById("themeToggle");
 
-    let selectedShirt = null;
-    const playersListContainer = document.querySelector(".players");
-    const playersList = document.getElementById("playersList");
-
-    document.querySelector(".shirt").addEventListener("click", function () {
-        selectedShirt = this;
-        showPlayers("forward");
+    // Переключение тем
+    themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light");
     });
 
-    function showPlayers(position) {
-        playersList.innerHTML = "";
-        playersData[position].forEach(player => {
-            const li = document.createElement("li");
-            li.innerHTML = <img src="${player.logo}" alt="${player.team}"> ${player.name} (${player.team});
-            li.addEventListener("click", () => selectPlayer(player));
-            playersList.appendChild(li);
+    // Запуск игры
+    startButton.addEventListener("click", () => {
+        tournamentSection.classList.add("hidden");
+        gameFieldSection.classList.remove("hidden");
+    });
+
+    // Открытие списка игроков
+    playerBadges.forEach(badge => {
+        badge.addEventListener("click", () => {
+            playerList.classList.remove("hidden");
+            playerList.dataset.selectedPosition = badge.dataset.position;
         });
+    });
 
-        playersListContainer.style.display = "block";
-    }
-
-    function selectPlayer(player) {
-        if (selectedShirt) {
-            const prevPlayer = {
-                name: selectedShirt.querySelector(".player-name").textContent,
-                logo: selectedShirt.dataset.logo || "images/logos/default.png"
-            };
-
-            selectedShirt.querySelector(".player-name").textContent = player.name;
-            selectedShirt.dataset.logo = player.logo;
-
-            const li = document.createElement("li");
-            li.innerHTML = <img src="${prevPlayer.logo}" alt="prev">${prevPlayer.name};
-            li
+    // Выбор игрока
+    document.querySelectorAll(".player-list li").forEach(player => {
+        player.addEventListener("click", () => {
+            const selectedBadge = document.querySelector(.player-badge[data-position="${playerList.dataset.selectedPosition}"]);
+            selectedBadge.textContent = player.dataset.name.charAt(0);
+            selectedBadge.classList.add("selected");
+            playerList.classList.add("hidden");
+        });
+    });
+});
