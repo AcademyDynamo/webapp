@@ -3,21 +3,17 @@ body {
     background-color: #0f5132;
     color: white;
     text-align: center;
-    background-image: url("field-background.jpg");
+    background-image: url('field.jpg'); /* Фоновое поле */
     background-size: cover;
     background-position: center;
-}
-
-h1, h2 {
-    text-shadow: 2px 2px 5px black;
+    overflow: hidden;
 }
 
 .field {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 20px;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .player {
@@ -52,22 +48,44 @@ h1, h2 {
     font-style: italic;
 }
 
-.substitutes-list {
-    list-style: none;
-    padding: 0;
-    text-align: center;
+/* Затемнение экрана при выборе игрока */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-.substitutes-list li {
-    background: rgba(255, 255, 255, 0.2);
+/* Контейнер списка запасных */
+.substitutes-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 300px;
+}
+
+/* Запасные игроки */
+.substitute-item {
     padding: 10px;
-    margin: 5px auto;
-    width: 250px;
-    border-radius: 5px;
+    margin: 5px 0;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-max-width: 600px {
-    .field {
-        flex-direction: column;
-    }
+.substitute-item:hover {
+    background: #aaa;
+}
+
+/* Анимация затемнения */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
