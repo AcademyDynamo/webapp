@@ -1,123 +1,57 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #D32F2F;
-    margin: 0;
-    padding-bottom: 80px; /* Отступ для футера */
-    color: white;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Лига</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-.container {
-    max-width: 450px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    color: black;
-}
+    <div class="container">
+        <h1>Собери свою команду</h1>
 
-h1, h2 {
-    color: black;
-}
+        <!-- Футбольное поле -->
+        <div class="field">
+            <img src="images/1football-field.png" alt="Футбольное поле" class="field-img">
 
-/* Увеличенное футбольное поле */
-.field {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    background-color: green;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+            <!-- Иконки футболок -->
+            <div class="shirt" data-position="goalkeeper">
+                <img src="images/1football-shirt.png.png" alt="Вратарь">
+            </div>
+            <div class="shirt" data-position="defender">
+                <img src="images/1football-shirt.png" alt="Защитник">
+            </div>
+            <div class="shirt" data-position="defender">
+                <img src="images/1football-shirt.png" alt="Защитник">
+            </div>
+            <div class="shirt" data-position="midfielder">
+                <img src="images/1football-shirt.png" alt="Полузащитник">
+            </div>
+            <div class="shirt" data-position="midfielder">
+                <img src="images/1football-shirt.png" alt="Полузащитник">
+            </div>
+            <div class="shirt" data-position="forward">
+                <img src="images/1football-shirt.png" alt="Нападающий">
+            </div
+                <div class="shirt" data-position="forward">
+                <img src="images/1football-shirt.png" alt="Нападающий">
+            </div>
+        </div>
 
-.field-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        <!-- Список игроков -->
+        <div class="players">
+            <h2>Доступные футболисты:</h2>
+            <ul id="playersList"></ul>
+        </div>
+    </div>
 
-/* Иконки футболок */
-.shirt {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
+    <!-- Логотип внизу -->
+    <footer>
+        <img src="images/грилек919f207c10388402c9b5.png" alt="Логотип Fantasy Лиги">
+    </footer>
 
-.shirt img {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1)); /* Тень 10% */
-}
-
-.shirt:hover {
-    transform: scale(1.1);
-}
-
-/* Позиции иконок */
-.shirt:nth-child(1) { top: 5%; left: 45%; }  /* Вратарь */
-.shirt:nth-child(2) { top: 25%; left: 20%; } /* Защитник 1 */
-.shirt:nth-child(3) { top: 25%; left: 70%; } /* Защитник 2 */
-.shirt:nth-child(4) { top: 45%; left: 35%; } /* Полузащитник 1 */
-.shirt:nth-child(5) { top: 45%; left: 55%; } /* Полузащитник 2 */
-.shirt:nth-child(6) { top: 65%; left: 30%; } /* Нападающий 1 */
-.shirt:nth-child(7) { top: 65%; left: 60%; } /* Нападающий 2 */
-
-/* Список игроков */
-.players {
-    display: none;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: flex;
-    align-items: center;
-    background: #ddd;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
-
-li:hover {
-    background: #bbb;
-}
-
-/* Прозрачный футер (только логотип виден) */
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-}
-
-footer img {
-    height: 50px;
-    background: white;
-    padding: 5px;
-    border-radius: 10px;
-}
+    <script src="script.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</body>
+</html>
