@@ -3,46 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantasy Лига</title>
+    <title>Fantasy League</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Собери свою команду</h1>
-
-        <!-- Футбольное поле -->
-        <div class="field">
-            <img src="images/1football-field.png" alt="Футбольное поле" class="field-img">
-
-            <!-- Иконки футболок -->
-            <div class="shirt" data-position="goalkeeper">
-                <img src="images/1football-shirt.png.png" alt="Вратарь">
-            </div>
-            <div class="shirt" data-position="defender">
-                <img src="images/1football-shirt.png" alt="Защитник">
-            </div>
-            <div class="shirt" data-position="midfielder">
-                <img src="images/1football-shirt.png" alt="Полузащитник">
-            </div>
-                <div class="shirt" data-position="forward">
-                <img src="images/1football-shirt.png" alt="Нападающий">
-            </div>
+    <div class="field">
+        <img src="images/field.png" class="field-img" alt="Футбольное поле">
+        
+        <div class="shirt" data-position="goalkeeper">
+            <img src="images/shirts/default.png" alt="Вратарь">
+            <p class="player-name">Выбери игрока</p>
+        </div>
+        
+        <div class="shirt" data-position="defender">
+            <img src="images/shirts/default.png" alt="Защитник">
+            <p class="player-name">Выбери игрока</p>
         </div>
 
-        <!-- Список игроков -->
-        <div class="players">
-            <h2>Доступные футболисты:</h2>
-            <ul id="playersList"></ul>
+        <div class="shirt" data-position="midfielder">
+            <img src="images/shirts/default.png" alt="Полузащитник">
+            <p class="player-name">Выбери игрока</p>
+        </div>
+
+        <div class="shirt" data-position="forward">
+            <img src="images/shirts/default.png" alt="Нападающий">
+            <p class="player-name">Выбери игрока</p>
         </div>
     </div>
 
-    <!-- Логотип внизу -->
+    <div class="players">
+        <h2>Выберите игрока:</h2>
+        <ul id="playersList"></ul>
+    </div>
+
     <footer>
-        <img src="images/грилек919f207c10388402c9b5.png" alt="Логотип Fantasy Лиги">
+        <img src="images/logo.png" alt="Логотип">
     </footer>
 
     <script src="script.js"></script>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </body>
 </html>
