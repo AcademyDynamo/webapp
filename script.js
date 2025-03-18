@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Запуск игры
     startButton.addEventListener("click", () => {
-        tournamentSection.classList.add("hidden");
-        gameFieldSection.classList.remove("hidden");
+        tournamentSection.style.display = "none"; // Скрываем турнирную страницу
+        gameFieldSection.style.display = "block"; // Показываем игровое поле
     });
 
     // Открытие списка игроков
