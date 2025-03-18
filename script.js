@@ -1,3 +1,8 @@
+console.log("Скрипт загружен!");
+document.querySelectorAll(".player").forEach(player => {
+    console.log("Нашёл игрока:", player);
+});
+
 // Показ затемнения и списка игроков
 function showOverlay(playerElement) {
     closeOverlay(); // Закрываем, если уже открыто
