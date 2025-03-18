@@ -3,41 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЮФЛ Сибирь</title>
+    <title>Футбольная Игра</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="menu" class="page active">
-        <h1>Турнир ЮФЛ Сибирь</h1>
-        <button class="button" onclick="showPage('field')">Перейти на футбольное поле</button>
-        <button class="button" onclick="showPage('support')">Поддержка</button>
-        <button class="button" onclick="showPage('stats')">Статистика</button>
-    </div>
 
-    <div id="field" class="page">
-        <h2>Футбольное поле</h2>
-        <div id="cards">
-            <button class="button" onclick="toggleCard(1)">Карточка 1 (К)</button>
-            <button class="button" onclick="toggleCard(2)">Карточка 2 (К)</button>
-            <button class="button" onclick="toggleCard(3)">Карточка 3 (К)</button>
-            <button class="button" onclick="toggleCard(4)">Карточка 4 (К)</button>
-            <button class="button" onclick="toggleCard(5)">Карточка 5 (К)</button>
-            <button class="button" onclick="toggleCard(6)">Карточка 6 (К)</button>
-            <button class="button" onclick="toggleCard(7)">Карточка 7 (К)</button>
+    <!-- Первая страница -->
+    <div class="page1" id="page1">
+        <div class="container">
+            <h1>Добро пожаловать в игру!</h1>
+            <button id="startButton">Начать</button>
         </div>
-        <button class="button" onclick="showPage('menu')">Назад</button>
     </div>
 
-    <div id="support" class="page">
-        <h2>Поддержка</h2>
-        <p>Здесь будет информация о правилах игры.</p>
-        <button class="button" onclick="showPage('menu')">Назад</button>
-    </div>
-
-    <div id="stats" class="page">
-        <h2>Статистика</h2>
-        <p id="stats-content">Загружаем...</p>
-        <button class="button" onclick="showPage('menu')">Назад</button>
+    <!-- Вторая страница -->
+    <div class="page2" id="page2" style="display: none;">
+        <div class="field">
+            <div class="card" data-id="1">1</div>
+            <div class="card" data-id="2">2</div>
+            <div class="card" data-id="3">3</div>
+            <div class="card" data-id="4">4</div>
+            <div class="card" data-id="5">5</div>
+            <div class="card" data-id="6">6</div>
+            <div class="card" data-id="7">7</div>
+        </div>
     </div>
 
     <script src="script.js"></script>
