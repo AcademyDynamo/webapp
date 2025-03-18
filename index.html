@@ -8,36 +8,22 @@
 </head>
 <body>
     <div class="container">
-        <!-- Турнирная страница -->
-        <section class="tournament">
-            <div class="banner">
-                <h1>ЮФЛ Сибирь</h1>
+        <h1>Fantasy League</h1>
+        <div class="field">
+            <div class="player-icon" data-team="team1">
+                <img src="shirt1.png" alt="Футболка">
             </div>
-            <button id="startGame">Начать игру</button>
-        </section>
-
-        <!-- Игровое поле -->
-        <section class="game-field hidden">
-            <div class="field">
-                <div class="player-badge" data-position="1">+</div>
-                <div class="player-badge" data-position="2">+</div>
-                <div class="player-badge" data-position="3">+</div>
-                <div class="player-badge" data-position="4">+</div>
-                <div class="player-badge" data-position="5">+</div>
-                <div class="player-badge" data-position="6">+</div>
-                <div class="player-badge" data-position="7">+</div>
+            <div class="player-icon" data-team="team2">
+                <img src="shirt2.png" alt="Футболка">
             </div>
-            <div id="player-list" class="player-list hidden">
-                <h2>Выберите игрока</h2>
-                <ul>
-                    <li data-name="Игрок 1">Игрок 1</li>
-                    <li data-name="Игрок 2">Игрок 2</li>
-                    <li data-name="Игрок 3">Игрок 3</li>
-                </ul>
+            <div class="player-icon" data-team="team3">
+                <img src="shirt3.png" alt="Футболка">
             </div>
-        </section>
-
-        <button id="themeToggle">Тема</button>
+        </div>
+        <div class="player-list hidden">
+            <h2 id="team-name">Игроки</h2>
+            <ul id="players"></ul>
+        </div>
     </div>
 
     <script src="script.js"></script>
