@@ -3,72 +3,48 @@ body {
     text-align: center;
     background-color: #D32F2F;
     margin: 0;
-    padding-bottom: 80px; /* Отступ для футера */
+    padding-bottom: 80px;
     color: white;
 }
 
-.container {
-    max-width: 450px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    color: black;
-}
-
-h1, h2 {
-    color: black;
-}
-
-/* Увеличенное футбольное поле */
 .field {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 450px;
     background-color: green;
     border-radius: 10px;
-    overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .field-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
 }
 
-/* Иконки футболок */
 .shirt {
-    position: absolute;
-    width: 60px;
-    height: 60px;
+    position: relative;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    text-align: center;
 }
 
 .shirt img {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1)); /* Тень 10% */
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));
 }
 
-.shirt:hover {
-    transform: scale(1.1);
+.player-name {
+    margin-top: 5px;
+    font-size: 14px;
+    color: white;
 }
 
-/* Позиции иконок */
-.shirt:nth-child(1) { top: 5%; left: 45%; }  /* Вратарь */
-.shirt:nth-child(2) { top: 25%; left: 20%; } /* Защитник 1 */
-.shirt:nth-child(3) { top: 25%; left: 70%; } /* Защитник 2 */
-.shirt:nth-child(4) { top: 45%; left: 35%; } /* Полузащитник 1 */
-.shirt:nth-child(5) { top: 45%; left: 55%; } /* Полузащитник 2 */
-.shirt:nth-child(6) { top: 65%; left: 30%; } /* Нападающий 1 */
-.shirt:nth-child(7) { top: 65%; left: 60%; } /* Нападающий 2 */
-
-/* Список игроков */
 .players {
     display: none;
     background: rgba(255, 255, 255, 0.9);
@@ -102,7 +78,6 @@ li:hover {
     background: #bbb;
 }
 
-/* Прозрачный футер (только логотип виден) */
 footer {
     position: fixed;
     bottom: 0;
