@@ -10,7 +10,7 @@ const players = [
 
 const substitutes = [
     { name: "Запасной 1" },
-    { name: "Запасной 2" },
+    { name: "Пидорасня ебанная" },
     { name: "Запасной 3" },
     { name: "Запасной 4" },
     { name: "Запасной 5" }
