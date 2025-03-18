@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const startButton = document.getElementById("startButton");
+    const helpButton = document.getElementById("helpButton");
+    const statsButton = document.getElementById("statsButton");
     const page1 = document.getElementById("page1");
     const page2 = document.getElementById("page2");
     const cards = document.querySelectorAll(".card");
@@ -10,12 +12,22 @@ document.addEventListener("DOMContentLoaded", function () {
         page2.style.display = "flex";
     });
 
+    // Вывод помощи
+    helpButton.addEventListener("click", function () {
+        alert("Правила игры: выберите карточку, чтобы увидеть список игроков.");
+    });
+
+    // Вывод статистики (заглушка)
+    statsButton.addEventListener("click", function () {
+        alert("Статистика: пока данных нет.");
+    });
+
     // Обработка нажатия на карточку
     cards.forEach(card => {
         card.addEventListener("click", function () {
             const id = this.dataset.id;
             const playersList = getPlayersList(id);
-            alert(Игроки на позиции ${ id }: ${ playersList.join(", ") });
+            alert(Игроки на позиции ${id}: ${playersList.join(", ")});
         });
     });
 });
