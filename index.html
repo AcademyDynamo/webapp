@@ -11,23 +11,30 @@
     <div class="container">
         <h1>Собери свою команду</h1>
 
-        <div class="team">
-            <h2>Твой состав:</h2>
-            <ul id="teamList"></ul>
+        <!-- Футбольное поле -->
+        <div class="field">
+            <img src="your_field_image_url.jpg" alt="Футбольное поле" class="field-img">
+
+            <!-- Иконки футболок -->
+            <div class="shirt" data-position="goalkeeper">
+                <img src="your_shirt_icon_url.png" alt="Вратарь">
+            </div>
+            <div class="shirt" data-position="defender">
+                <img src="your_shirt_icon_url.png" alt="Защитник">
+            </div>
+            <div class="shirt" data-position="midfielder">
+                <img src="your_shirt_icon_url.png" alt="Полузащитник">
+            </div>
+            <div class="shirt" data-position="forward">
+                <img src="your_shirt_icon_url.png" alt="Нападающий">
+            </div>
         </div>
 
+        <!-- Список игроков -->
         <div class="players">
-            <h2>Выбери игроков:</h2>
-            <div class="positions">
-                <button class="position-btn" data-position="goalkeeper">Вратарь</button>
-                <button class="position-btn" data-position="defender">Защитник</button>
-                <button class="position-btn" data-position="midfielder">Полузащитник</button>
-                <button class="position-btn" data-position="forward">Нападающий</button>
-            </div>
+            <h2>Доступные футболисты:</h2>
             <ul id="playersList"></ul>
         </div>
-
-        <button id="sendTeam">Отправить команду</button>
     </div>
 
     <script src="script.js"></script>
