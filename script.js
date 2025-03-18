@@ -28,9 +28,15 @@ async function loadPlayers() {
 // Открытие списка запасных с затемнением экрана
 async function showSubstitutes(playerElement) {
     const substitutes = await fetchSubstitutes();
+
+    // Если уже открыто - закрываем перед созданием нового списка
+    closeSubstitutes();
+
+    // Затемнение экрана
     const overlay = document.createElement("div");
     overlay.classList.add("overlay");
 
+    // Контейнер для списка запасных
     const listContainer = document.createElement("div");
     listContainer.classList.add("substitutes-container");
 
@@ -38,19 +44,26 @@ async function showSubstitutes(playerElement) {
         const listItem = document.createElement("div");
         listItem.classList.add("substitute-item");
         listItem.textContent = ${sub.name} - ${sub.team} (${sub.position});
+        
         listItem.addEventListener("click", () => {
             playerElement.querySelector(".player-name").textContent = sub.name;
             playerElement.querySelector(".player-team").textContent = sub.team;
             playerElement.querySelector(".player-position").textContent = sub.position;
             closeSubstitutes();
         });
+
         listContainer.appendChild(listItem);
     });
 
     overlay.appendChild(listContainer);
     document.body.appendChild(overlay);
 
-    overlay.addEventListener("click", closeSubstitutes);
+    // Закрытие списка при клике вне него
+    overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) {
+            closeSubstitutes();
+        }
+    });
 }
 
 // Закрытие списка запасных
