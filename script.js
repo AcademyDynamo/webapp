@@ -18,6 +18,9 @@ const substitutes = [
 
 const playerElements = document.querySelectorAll(".player");
 const playerList = document.getElementById("player-list");
+const overlay = document.createElement("div");
+overlay.classList.add("overlay");
+document.body.appendChild(overlay);
 
 let activePlayerIndex = null;
 
@@ -38,7 +41,10 @@ function showPlayerList() {
         option.addEventListener("click", () => changePlayer(sub));
         playerList.appendChild(option);
     });
+
     playerList.classList.add("visible");
+    overlay.classList.add("visible");
+    document.body.classList.add("no-hover");
 }
 
 // Замена игрока
@@ -53,6 +59,8 @@ function changePlayer(sub) {
 // Закрытие списка запасных
 function closePlayerList() {
     playerList.classList.remove("visible");
+    overlay.classList.remove("visible");
+    document.body.classList.remove("no-hover");
 }
 
 // Обновление UI
