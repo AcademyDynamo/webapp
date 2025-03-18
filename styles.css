@@ -21,26 +21,6 @@ h1, h2 {
     color: black;
 }
 
-/* Увеличенное футбольное поле */
-.field {
-    position: relative;
-    width: 100%;
-    height: 400px; /* Увеличена высота */
-    background-color: green;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.field-img {
-    width: 100%;
-    height: 100%;
-    opacity: 20%;
-    object-fit: cover;
-}
-
 /* Иконки футболок */
 .shirt {
     position: absolute;
@@ -62,6 +42,28 @@ h1, h2 {
 .shirt:nth-child(5) { top: 45%; left: 55%; } /* Полузащитник 2 */
 .shirt:nth-child(6) { top: 65%; left: 30%; } /* Нападающий 1 */
 .shirt:nth-child(7) { top: 65%; left: 60%; } /* Нападающий 2 */
+
+
+/* Увеличенное футбольное поле */
+.field {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Увеличена высота */
+    background-color: green;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.field-img {
+    width: 100%;
+    height: 100%;
+    opacity: 20%;
+    object-fit: cover;
+}
+
 
 /* Список игроков */
 ul {
