@@ -1,92 +1,134 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #D32F2F;
     margin: 0;
-    padding-bottom: 80px;
+    padding: 0;
+    background: linear-gradient(135deg, #5a0000, #d40000);
     color: white;
+    text-align: center;
+    transition: background 0.5s;
+}
+
+/* Светлая тема */
+body.light {
+    background: linear-gradient(135deg, #ffffff, #cccccc);
+    color: black;
+}
+
+.container {
+    padding: 20px;
+}
+
+.tournament .banner {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #ff4d4d;
+    color: white;
+    transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+    background: #ff3333;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Игровое поле */
+.game-field {
+    margin-top: 20px;
 }
 
 .field {
-    position: relative;
-    width: 100%;
-    height: 450px;
-    background-color: green;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
     justify-content: center;
 }
 
-.field-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-}
-
-.shirt {
-    position: relative;
-    width: 80px;
-    height: 80px;
+.player-badge {
+    width: 60px;
+    height: 60px;
+    background: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 2em;
     cursor: pointer;
-    text-align: center;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s, background 0.3s;
 }
 
-.shirt:active {
+.player-badge:hover {
+    background: yellow;
     transform: scale(1.1);
 }
 
-.shirt img {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));
-}
-
-.player-name {
-    margin-top: 5px;
-    font-size: 14px;
+.player-badge.selected {
+    background: green;
     color: white;
 }
 
-/* Список игроков */
-.players {
-    display: none;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 20px;
-    position: absolute;
+/* Окно выбора игроков */
+.player-list {
+    position: fixed;
+    top: 50%;
     left: 50%;
-    top: 60%;
-    transform: translateX(-50%);
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.3s ease-in-out;
 }
 
-ul {
-    list-style-type: none;
+.player-list.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.player-list ul {
+    list-style: none;
     padding: 0;
 }
 
-li {
-    display: flex;
-    align-items: center;
-    background: #ddd;
+.player-list li {
     padding: 10px;
-    margin: 5px 0;
+    margin: 5px;
+    background: white;
+    color: black;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.2s;
 }
 
-li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+.player-list li:hover {
+    background: lightgray;
 }
 
-li:hover {
-    background: #bbb;
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.hidden {
+    display: none;
 }
