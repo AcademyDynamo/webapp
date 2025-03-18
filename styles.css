@@ -1,31 +1,73 @@
-.header {
-    background-color: #333;
-    color: #fff;
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Первая страница */
+.page1 {
+    height: 100vh;
+    background: linear-gradient(180deg, #FF6347, #D32F2F); /* Красный градиент */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 18px;
+    background-color: #B71C1C;
+    border: none;
+    border-radius: 25px; /* Округленные кнопки */
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    button:hover {
+        background-color: #9C1B1B;
+    }
+
+/* Вторая страница */
+.page2 {
+    height: 100vh;
+    background-color: #D32F2F; /* Красный фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Футбольное поле */
+.field {
+    width: 80%;
+    height: 60%;
+    background-color: #388E3C; /* Зеленое поле */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Карточки */
+.card {
+    background-color: #FF3D00; /* Ярко-красные карточки */
     padding: 20px;
     text-align: center;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
-.page {
-    display: none;
-}
-
-.active {
-    display: block;
-}
-
-.button {
-    padding: 10px 20px;
-    margin: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* Небольшая тень */
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s;
 }
 
-.active-card {
-    background-color: green;
-    color: white;
-}
+    .card:hover {
+        background-color: #D32F2F;
+    }
 
