@@ -25,22 +25,46 @@ async function loadPlayers() {
     });
 }
 
-// Загрузка запасных
-async function loadSubstitutes() {
+// Открытие списка запасных с затемнением экрана
+async function showSubstitutes(playerElement) {
     const substitutes = await fetchSubstitutes();
-    const substitutesList = document.querySelector(".substitutes-list");
-    
-    substitutesList.innerHTML = ""; // Очищаем список перед обновлением
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+
+    const listContainer = document.createElement("div");
+    listContainer.classList.add("substitutes-container");
 
     substitutes.forEach(sub => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${sub.name} - ${sub.team} (${sub.position})`;
-        substitutesList.appendChild(listItem);
+        const listItem = document.createElement("div");
+        listItem.classList.add("substitute-item");
+        listItem.textContent = ${sub.name} - ${sub.team} (${sub.position});
+        listItem.addEventListener("click", () => {
+            playerElement.querySelector(".player-name").textContent = sub.name;
+            playerElement.querySelector(".player-team").textContent = sub.team;
+            playerElement.querySelector(".player-position").textContent = sub.position;
+            closeSubstitutes();
+        });
+        listContainer.appendChild(listItem);
     });
+
+    overlay.appendChild(listContainer);
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", closeSubstitutes);
 }
 
-// Загружаем игроков и запасных при старте
-document.addEventListener("DOMContentLoaded", () => {
-    loadPlayers();
-    loadSubstitutes();
+// Закрытие списка запасных
+function closeSubstitutes() {
+    const overlay = document.querySelector(".overlay");
+    if (overlay) {
+        overlay.remove();
+    }
+}
+
+// Назначаем обработчик клика на футболки
+document.querySelectorAll(".player").forEach(player => {
+    player.addEventListener("click", () => showSubstitutes(player));
 });
+
+// Загружаем игроков при старте
+document.addEventListener("DOMContentLoaded", loadPlayers);
