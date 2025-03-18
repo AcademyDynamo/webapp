@@ -1,20 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
     const players = {
-        goalkeeper: ["Алисон", "Нойер", "Куртуа"],
-        defender: ["Рамос", "Ван Дейк", "Кимпембе"],
-        midfielder: ["Де Брюйне", "Кроос", "Модрич"],
-        forward: ["Месси", "Роналду", "Холанд"]
+        goalkeeper: [
+            { name: "Алисон", team: "Ливерпуль", logo: "liverpool_logo.png" },
+            { name: "Нойер", team: "Бавария", logo: "bayern_logo.png" },
+            { name: "Куртуа", team: "Реал", logo: "real_madrid_logo.png" }
+        ],
+        defender: [
+            { name: "Рамос", team: "ПСЖ", logo: "psg_logo.png" },
+            { name: "Ван Дейк", team: "Ливерпуль", logo: "liverpool_logo.png" },
+            { name: "Кимпембе", team: "ПСЖ", logo: "psg_logo.png" }
+        ],
+        midfielder: [
+            { name: "Де Брюйне", team: "Манчестер Сити", logo: "mancity_logo.png" },
+            { name: "Кроос", team: "Реал", logo: "real_madrid_logo.png" },
+            { name: "Модрич", team: "Реал", logo: "real_madrid_logo.png" }
+        ],
+        forward: [
+            { name: "Месси", team: "Интер Майами", logo: "inter_miami_logo.png" },
+            { name: "Роналду", team: "Аль-Наср", logo: "al_nassr_logo.png" },
+            { name: "Холанд", team: "Манчестер Сити", logo: "mancity_logo.png" }
+        ]
     };
 
-    const team = [];
-    const maxPlayers = 4;
-
     const playersList = document.getElementById("playersList");
-    const teamList = document.getElementById("teamList");
-    const sendTeamButton = document.getElementById("sendTeam");
 
-    document.querySelectorAll(".position-btn").forEach(btn => {
-        btn.addEventListener("click", function () {
+    document.querySelectorAll(".shirt").forEach(shirt => {
+        shirt.addEventListener("click", function () {
             const position = this.dataset.position;
             showPlayers(position);
         });
@@ -24,47 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
         playersList.innerHTML = "";
         players[position].forEach(player => {
             const li = document.createElement("li");
-            li.textContent = player;
-            li.addEventListener("click", function () {
-                addToTeam(player);
-            });
+            li.innerHTML = <img src="${player.logo}" alt="${player.team}"> ${player.name} (${player.team});
             playersList.appendChild(li);
         });
     }
-
-    function addToTeam(player) {
-        if (team.length >= maxPlayers) {
-            alert("Максимум 4 игрока!");
-            return;
-        }
-        if (!team.includes(player)) {
-            team.push(player);
-            updateTeamList();
-        }
-    }
-
-    function updateTeamList() {
-        teamList.innerHTML = "";
-        team.forEach(player => {
-            const li = document.createElement("li");
-            li.textContent = player;
-            teamList.appendChild(li);
-        });
-    }
-
-    sendTeamButton.addEventListener("click", function () {
-        if (team.length < maxPlayers) {
-            alert("Выбери 4 игроков!");
-            return;
-        }
-        
-        const teamData = JSON.stringify(team);
-        
-        if (window.Telegram && Telegram.WebApp) {
-            Telegram.WebApp.sendData(teamData);
-            Telegram.WebApp.close();
-        } else {
-            alert("Telegram WebApp API не поддерживается.");
-        }
-    });
 });
