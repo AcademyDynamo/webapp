@@ -1,11 +1,11 @@
 const players = [
-    { name: "Игрок 1", image: "shirt-icon.png" },
-    { name: "Игрок 2", image: "shirt-icon.png" },
-    { name: "Игрок 3", image: "shirt-icon.png" },
-    { name: "Игрок 4", image: "shirt-icon.png" },
-    { name: "Игрок 5", image: "shirt-icon.png" },
-    { name: "Игрок 6", image: "shirt-icon.png" },
-    { name: "Игрок 7", image: "shirt-icon.png" }
+    { name: "Игрок 1", image: "images/1football-shirt.png" },
+    { name: "Игрок 2", image: "images/1football-shirt.png" },
+    { name: "Игрок 3", image: "images/1football-shirt.png" },
+    { name: "Игрок 4", image: "images/1football-shirt.png" },
+    { name: "Игрок 5", image: "images/1football-shirt.png" },
+    { name: "Игрок 6", image: "images/1football-shirt.png" },
+    { name: "Игрок 7", image: "images/1football-shirt.png" }
 ];
 
 const substitutes = [
