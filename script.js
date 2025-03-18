@@ -1,19 +1,70 @@
-const teams = {
-    team1: { name: "ЮФЛ Сибирь", players: ["Игрок 1", "Игрок 2", "Игрок 3"] },
-    team2: { name: "Динамо", players: ["Игрок 4", "Игрок 5", "Игрок 6"] },
-    team3: { name: "Спартак", players: ["Игрок 7", "Игрок 8", "Игрок 9"] }
-};
+const players = [
+    { name: "Игрок 1", image: "shirt-icon.png" },
+    { name: "Игрок 2", image: "shirt-icon.png" },
+    { name: "Игрок 3", image: "shirt-icon.png" },
+    { name: "Игрок 4", image: "shirt-icon.png" },
+    { name: "Игрок 5", image: "shirt-icon.png" },
+    { name: "Игрок 6", image: "shirt-icon.png" },
+    { name: "Игрок 7", image: "shirt-icon.png" }
+];
 
-document.querySelectorAll(".player-icon").forEach(icon => {
-    icon.addEventListener("click", function() {
-        const teamKey = this.getAttribute("data-team");
-        const team = teams[teamKey];
+const substitutes = [
+    { name: "Запасной 1" },
+    { name: "Запасной 2" },
+    { name: "Запасной 3" },
+    { name: "Запасной 4" },
+    { name: "Запасной 5" }
+];
 
-        document.getElementById("team-name").textContent = team.name;
-        const playersList = document.getElementById("players");
-        playersList.innerHTML = team.players.map(player => <li>${player}</li>).join("");
+const playerElements = document.querySelectorAll(".player");
+const playerList = document.getElementById("player-list");
 
-        const playerList = document.querySelector(".player-list");
-        playerList.classList.remove("hidden");
+let activePlayerIndex = null;
+
+// Открытие списка запасных
+playerElements.forEach((player, index) => {
+    player.addEventListener("click", () => {
+        activePlayerIndex = index;
+        showPlayerList();
     });
+});
+
+function showPlayerList() {
+    playerList.innerHTML = "";
+    substitutes.forEach((sub) => {
+        const option = document.createElement("div");
+        option.classList.add("player-option");
+        option.textContent = sub.name;
+        option.addEventListener("click", () => changePlayer(sub));
+        playerList.appendChild(option);
+    });
+    playerList.classList.add("visible");
+}
+
+// Замена игрока
+function changePlayer(sub) {
+    if (activePlayerIndex !== null) {
+        players[activePlayerIndex].name = sub.name;
+        updateUI();
+    }
+    closePlayerList();
+}
+
+// Закрытие списка запасных
+function closePlayerList() {
+    playerList.classList.remove("visible");
+}
+
+// Обновление UI
+function updateUI() {
+    playerElements.forEach((player, index) => {
+        player.querySelector(".player-name").textContent = players[index].name;
+    });
+}
+
+// Закрытие списка при клике вне его
+document.addEventListener("click", (event) => {
+    if (!playerList.contains(event.target) && !event.target.closest(".player")) {
+        closePlayerList();
+    }
 });
