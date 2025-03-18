@@ -4,12 +4,6 @@ async function fetchPlayers() {
     return await response.json();
 }
 
-// Получение списка запасных
-async function fetchSubstitutes() {
-    const response = await fetch("http://127.0.0.1:5000/substitutes");
-    return await response.json();
-}
-
 // Загрузка игроков на поле
 async function loadPlayers() {
     const players = await fetchPlayers();
@@ -25,58 +19,41 @@ async function loadPlayers() {
     });
 }
 
-// Открытие списка запасных с затемнением экрана
-async function showSubstitutes(playerElement) {
-    const substitutes = await fetchSubstitutes();
-
-    // Если уже открыто - закрываем перед созданием нового списка
-    closeSubstitutes();
+// Показ затемнения и прямоугольника
+function showOverlay() {
+    closeOverlay(); // Закрываем, если уже открыто
 
     // Затемнение экрана
     const overlay = document.createElement("div");
     overlay.classList.add("overlay");
 
-    // Контейнер для списка запасных
-    const listContainer = document.createElement("div");
-    listContainer.classList.add("substitutes-container");
+    // Прямоугольник
+    const modal = document.createElement("div");
+    modal.classList.add("modal-box");
+    modal.textContent = "Выбор игрока..."; // Заглушка
 
-    substitutes.forEach(sub => {
-        const listItem = document.createElement("div");
-        listItem.classList.add("substitute-item");
-        listItem.textContent = ${sub.name} - ${sub.team} (${sub.position});
-        
-        listItem.addEventListener("click", () => {
-            playerElement.querySelector(".player-name").textContent = sub.name;
-            playerElement.querySelector(".player-team").textContent = sub.team;
-            playerElement.querySelector(".player-position").textContent = sub.position;
-            closeSubstitutes();
-        });
-
-        listContainer.appendChild(listItem);
-    });
-
-    overlay.appendChild(listContainer);
+    overlay.appendChild(modal);
     document.body.appendChild(overlay);
 
-    // Закрытие списка при клике вне него
-    overlay.addEventListener("click", (event) => {
-        if (event.target === overlay) {
-            closeSubstitutes();
-        }
-    });
+    // Блокируем скролл
+    document.body.style.overflow = "hidden";
+
+    // Закрытие при клике вне прямоугольника
+    overlay.addEventListener("click", closeOverlay);
 }
 
-// Закрытие списка запасных
-function closeSubstitutes() {
+// Закрытие затемнения и модального окна
+function closeOverlay() {
     const overlay = document.querySelector(".overlay");
     if (overlay) {
         overlay.remove();
     }
+    document.body.style.overflow = "auto"; // Разблокируем скролл
 }
 
 // Назначаем обработчик клика на футболки
 document.querySelectorAll(".player").forEach(player => {
-    player.addEventListener("click", () => showSubstitutes(player));
+    player.addEventListener("click", showOverlay);
 });
 
 // Загружаем игроков при старте
