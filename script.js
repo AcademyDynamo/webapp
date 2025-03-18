@@ -39,7 +39,11 @@ function showOverlay() {
     document.body.style.overflow = "hidden";
 
     // Закрытие при клике вне прямоугольника
-    overlay.addEventListener("click", closeOverlay);
+    overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) {
+            closeOverlay();
+        }
+    });
 }
 
 // Закрытие затемнения и модального окна
@@ -52,9 +56,9 @@ function closeOverlay() {
 }
 
 // Назначаем обработчик клика на футболки
-document.querySelectorAll(".player").forEach(player => {
-    player.addEventListener("click", showOverlay);
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".player").forEach(player => {
+        player.addEventListener("click", showOverlay);
+    });
+    loadPlayers();
 });
-
-// Загружаем игроков при старте
-document.addEventListener("DOMContentLoaded", loadPlayers);
